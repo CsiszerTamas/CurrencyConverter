@@ -16,9 +16,21 @@ The project uses the Model-View-ViewModel (MVVM) architecture with a Single Acti
 * **Timber** for logging
 * **Retrofit** for networking
 * **Moshi** for JSON parsing
-* **Couroutines** for asynchronous io (api & database)
+* **Couroutines** for asynchronous operations
 * **JUnit 4, Truth, Espresso** for adding some tests
 * **ktlint, detekt** for Kotlin code verification
 
+You can download the APK from the following link:
+https://github.com/CsiszerTamas/CurrencyConverter/blob/master/apk/CurrencyConverter_debug.apk
+
 The flag icons are from
 https://www.flaticon.com/
+
+Architecture diagram:
+![Alt text](https://user-images.githubusercontent.com/31385348/102409162-43afd180-3ff7-11eb-98e1-84d335bc42d7.png "Architecture diagram")
+
+Screenshots:
+![Alt text](https://user-images.githubusercontent.com/31385348/102409180-490d1c00-3ff7-11eb-8fdd-033a517198cf.png "Light mode")
+
+![Alt text](https://user-images.githubusercontent.com/31385348/102409184-4ad6df80-3ff7-11eb-8a65-9c88183c3459.png "Dark mode")
+
