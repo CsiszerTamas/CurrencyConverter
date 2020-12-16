@@ -1,0 +1,102 @@
+<resources>
+    <string name="app_name">Currency Converter</string>
+
+    <string name="fragment_rates_title">Rates</string>
+    <string name="fragment_about_title">About</string>
+
+    <string name="no_internet_error_message">Something went wrong, check your internet connection to see the rates!</string>
+    <string name="viewing_cached_data">Oops! You don\'t have a working internet connection!\nYou are viewing cached rates.</string>
+    <string name="retry">Retry</string>
+
+    <string name="placeholder_for_flag_icon">Placeholder for currency icon</string>
+    <string name="light_mode">Light mode</string>
+    <string name="dark_mode">Dark mode</string>
+    <string name="about">About</string>
+    <string name="fragment_about_description_text">
+         This app fetches and displays conversion rates for a list of some currencies from the given API in every 1 second.\n\n
+        When the user taps on a currency, it is moved to the top of the list, the rate field is focused. If the user changes the input, all the other currencies will update with the actual rates.\n\n
+        When there is no internet connection, the app will provide offline conversions based on the latest cached base-rate data.\n\n
+        These rates are saved locally and are updated whenever internet connectivity is restored.\n\n
+        When there is no internet connection, at app start a Snackbar informs the user about the offline usage if there is data in the local cache.\n\n
+        The project uses the Model-View-ViewModel (MVVM) architecture with the Single Activity design and Navigation Component.\n\n
+        Libraries used:\n
+        - Material design for respecting the latest UI trends in Android development\n
+        - Koin for dependency injection\n
+        - Timber for logging\n
+        - Retrofit for networking\n
+        - Moshi for JSON parsing\n
+        - Couroutines for asynchronous operations\n
+        - Room for storing the rates locally (offline cache)\n
+        \nSource of flag icons: http://flaticon.com/
+    </string>
+
+    <string-array name="tickers">
+        <item>EUR</item>
+        <item>AUD</item>
+        <item>BGN</item>
+        <item>BRL</item>
+        <item>CAD</item>
+        <item>CHF</item>
+        <item>CNY</item>
+        <item>CZK</item>
+        <item>DKK</item>
+        <item>GBP</item>
+        <item>HKD</item>
+        <item>HRK</item>
+        <item>HUF</item>
+        <item>IDR</item>
+        <item>ILS</item>
+        <item>INR</item>
+        <item>ISK</item>
+        <item>JPY</item>
+        <item>KRW</item>
+        <item>MXN</item>
+        <item>MYR</item>
+        <item>NOK</item>
+        <item>NZD</item>
+        <item>PHP</item>
+        <item>PLN</item>
+        <item>RON</item>
+        <item>RUB</item>
+        <item>SEK</item>
+        <item>SGD</item>
+        <item>THB</item>
+        <item>USD</item>
+        <item>ZAR</item>
+    </string-array>
+
+    <string-array name="currency_names">
+        <item>Euro</item>
+        <item>Australian dollar</item>
+        <item>Bulgarian lev</item>
+        <item>Brazilian real</item>
+        <item>Canadian dollar</item>
+        <item>Swiss franc</item>
+        <item>Chinese yuan</item>
+        <item>Czech koruna</item>
+        <item>Danish krone</item>
+        <item>Pound sterling</item>
+        <item>Hong Kong dollar</item>
+        <item>Croatian kuna</item>
+        <item>Hungarian forint</item>
+        <item>Indonesian rupiah</item>
+        <item>Israeli shekel</item>
+        <item>Indian rupee</item>
+        <item>Icelandic króna</item>
+        <item>Japanese yen</item>
+        <item>South Korean won</item>
+        <item>Mexican peso</item>
+        <item>Malaysian ringgit</item>
+        <item>Norwegian krone</item>
+        <item>New Zealand dollar</item>
+        <item>Philippine peso</item>
+        <item>Polish złoty</item>
+        <item>Romanian leu</item>
+        <item>Russian rouble</item>
+        <item>Swedish krona</item>
+        <item>Singapore dollar</item>
+        <item>Thai baht</item>
+        <item>US Dollar</item>
+        <item>South African rand</item>
+    </string-array>
+</resources>

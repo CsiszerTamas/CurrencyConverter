@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?><!--For performance reasons we may replace ConstraintLayout here with RelativeLayout in future-->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/rate_item_height">
+
+        <ImageView
+            android:id="@+id/flag"
+            android:layout_width="@dimen/flag_size"
+            android:layout_height="@dimen/flag_size"
+            android:layout_marginStart="16dp"
+            android:contentDescription="@string/placeholder_for_flag_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/aud" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/ticker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:textAppearance="@style/TickerStyle"
+            app:layout_constraintLeft_toRightOf="@id/flag"
+            app:layout_constraintTop_toTopOf="@+id/flag"
+            tools:text="USD" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TickerDescriptionStyle"
+            app:layout_constraintLeft_toLeftOf="@id/ticker"
+            app:layout_constraintTop_toBottomOf="@id/ticker"
+            tools:text="US Dollar" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_email"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="@+id/flag"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/flag">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:descendantFocusability="beforeDescendants"
+                android:digits="0123456789."
+                android:focusableInTouchMode="true"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:maxLength="12"
+                android:singleLine="true"
+                android:textAlignment="textEnd"
+                android:textAppearance="@style/AmountStyle"
+                tools:text="1183.06" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

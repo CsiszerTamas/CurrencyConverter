@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="none">
+        <item
+            android:id="@+id/light"
+            android:icon="@drawable/ic_sun"
+            android:title="@string/light_mode" />
+        <item
+            android:id="@+id/dark"
+            android:icon="@drawable/ic_moon"
+            android:title="@string/dark_mode" />
+        <item
+            android:id="@+id/about"
+            android:icon="@drawable/ic_info"
+            android:title="@string/about" />
+    </group>
+</menu>
