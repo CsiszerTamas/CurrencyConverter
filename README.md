@@ -16,7 +16,7 @@ The project uses the Model-View-ViewModel (MVVM) architecture with a Single Acti
 * **Timber** for logging
 * **Retrofit** for networking
 * **Moshi** for JSON parsing
-* **Couroutines** for asynchronous operations
+* **Coroutines** for asynchronous operations
 * **JUnit 4, Truth, Espresso** for adding some tests
 * **ktlint, detekt** for Kotlin code verification
 
