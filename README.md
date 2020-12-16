@@ -18,7 +18,7 @@ The project uses the Model-View-ViewModel (MVVM) architecture with a Single Acti
 * **Moshi** for JSON parsing
 * **Couroutines** for asynchronous io (api & database)
 * **JUnit 4, Truth, Espresso** for adding some tests
-* **ktlint, detekt ** for Kotlin code verification
+* **ktlint, detekt** for Kotlin code verification
 
 The flag icons are from
 https://www.flaticon.com/
