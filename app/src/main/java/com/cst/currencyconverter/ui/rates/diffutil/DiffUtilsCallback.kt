@@ -2,6 +2,7 @@ package com.cst.currencyconverter.ui.rates.diffutil
 
 import androidx.recyclerview.widget.DiffUtil
 
+// if we use
 open class DiffUtilsCallback<T> @JvmOverloads constructor(
     private val oldList: List<T>,
     private val newList: List<T>,

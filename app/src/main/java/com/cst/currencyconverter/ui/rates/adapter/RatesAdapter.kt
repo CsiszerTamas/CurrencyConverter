@@ -12,20 +12,20 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.cst.currencyconverter.R
-import com.cst.currencyconverter.constants.Constants
 import com.cst.currencyconverter.data.CurrencyRate
 import com.cst.currencyconverter.databinding.RateItemBinding
+import com.cst.currencyconverter.ui.rates.diffutil.CurrencyRateDiffCallback
 import com.cst.currencyconverter.ui.rates.diffutil.RatesDiffUtilCallback
-import com.cst.currencyconverter.utils.addDecimalLimiter
 import java.math.BigDecimal
 
 class RatesAdapter(
     private val onAmountChanged: (value: BigDecimal, ticker: String) -> Unit,
     private val rateAdapterContract: RateAdapterContract
-) :
-    RecyclerView.Adapter<RatesAdapter.RatesViewHolder>() {
+) : ListAdapter<CurrencyRate, RatesAdapter.RatesViewHolder>(CurrencyRateDiffCallback()) {
+
     private val mainThreadHandler = Handler(Looper.getMainLooper())
     var rates: MutableList<CurrencyRate> = mutableListOf()
         set(value) {
@@ -151,8 +151,9 @@ class RatesAdapter(
                 }
             }
 
+            // TODO: Temporarily remove decimal limitation
             // add decimal limiter, we enable only 2 decimals
-            binding.amount.addDecimalLimiter(Constants.RATE_ENABLED_DECIMALS)
+            // binding.amount.addDecimalLimiter(Constants.RATE_ENABLED_DECIMALS)
         }
 
         private fun sendOnAmountChanged() {
@@ -173,4 +174,6 @@ class RatesAdapter(
             }
         }
     }
+
+
 }

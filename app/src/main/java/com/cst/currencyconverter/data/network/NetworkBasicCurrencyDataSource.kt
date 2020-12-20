@@ -16,8 +16,8 @@ import java.util.concurrent.TimeUnit
 
 class NetworkBasicCurrencyDataSource(
     private val ratesNetworkService: RatesNetworkService
-) :
-    BasicCurrencyDataSource {
+) : BasicCurrencyDataSource {
+
     private var executor: ScheduledExecutorService? = null
 
     override fun getRates(): LiveData<Resource<BasicRatesData>> {

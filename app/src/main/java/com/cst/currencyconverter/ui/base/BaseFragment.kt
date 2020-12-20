@@ -27,8 +27,6 @@ abstract class BaseFragment<B : ViewDataBinding, out VM : ViewModel>(
     protected open val viewModel: VM by viewModel(vmClass, qualifier = TypeQualifier(vmClass))
     protected lateinit var navController: NavController
 
-    private var navControllerNotInitialized = false
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -40,7 +38,6 @@ abstract class BaseFragment<B : ViewDataBinding, out VM : ViewModel>(
             navController = navHostFragment.navController
         } catch (ex: IllegalStateException) {
             Timber.e(ex)
-            navControllerNotInitialized = true
         }
 
         val callback: OnBackPressedCallback = object : OnBackPressedCallback(true) {
@@ -54,7 +51,7 @@ abstract class BaseFragment<B : ViewDataBinding, out VM : ViewModel>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (navControllerNotInitialized) {
+        if (::navController.isInitialized) {
             try {
                 val supportFragmentManager = requireActivity().supportFragmentManager
                 val navHostFragment =
