@@ -1,6 +1,7 @@
-package com.cst.currencyconverter.data
+package com.cst.currencyconverter.data.network
 
 import androidx.lifecycle.LiveData
+import com.cst.currencyconverter.data.Resource
 import com.cst.currencyconverter.data.model.BasicRatesData
 
 internal interface BasicCurrencyDataSource {

@@ -78,8 +78,19 @@ class RatesViewModel(
                     }
                 }
 
-                updatedRates.value =
-                    updateRates(selectedAmount, selectedCurrency, latestNetworkState)
+                // Do rate calculations on background worker thread
+                launch {
+                    withContext(Dispatchers.IO) {
+                        updatedRates.postValue(
+                            updateRates(
+                                selectedAmount,
+                                selectedCurrency,
+                                latestNetworkState
+                            )
+                        )
+                    }
+                }
+
             } else {
                 updatedRates.value = value
             }
@@ -95,8 +106,18 @@ class RatesViewModel(
     fun enterCurrencyValue(selectedAmount: BigDecimal, selectedCurrency: String) {
         this.selectedAmount = selectedAmount
         this.selectedCurrency = selectedCurrency
-        manuallyEnteredValues.value =
-            updateRates(this.selectedAmount, this.selectedCurrency, latestNetworkState)
+
+        launch {
+            withContext(Dispatchers.IO) {
+                manuallyEnteredValues.postValue(
+                    updateRates(
+                        selectedAmount,
+                        selectedCurrency,
+                        latestNetworkState
+                    )
+                )
+            }
+        }
     }
 
     private fun updateRates(
@@ -119,7 +140,6 @@ class RatesViewModel(
             val coefficient = selectedAmount.divide(oldValue, SCALE, RoundingMode.HALF_UP)
             val updatedRates = latestNetworkState.rates.map { currencyRate ->
                 val newRate =
-                    // Avoid receiving better network value while we perform click
                     if (currencyRate.basicCurrencyRate.currencyShortName == selectedCurrencyShortName) selectedAmount
                     else (currencyRate.basicCurrencyRate.rate * coefficient)
                 currencyRate.copy(basicCurrencyRate = currencyRate.basicCurrencyRate.copy(rate = newRate))

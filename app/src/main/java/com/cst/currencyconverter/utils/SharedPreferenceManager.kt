@@ -13,9 +13,13 @@ class SharedPreferenceManager(private val sharedPreferences: SharedPreferences) 
 
         // Boolean
         const val PREFERENCES_RATES_CACHED = "RATES_CACHED"
+        const val PREFERENCES_SELECTED_CURRENCY_SAVED = "SELECTED_CURRENCY_SAVED"
 
         // Int
         const val PREFERENCES_NIGHT_MODE_CODE = "NIGHT_MODE_CODE"
+
+        // String
+        const val PREFERENCES_SELECTED_CURRENCY = "SELECTED_CURRENCY"
     }
 
     var cachedRatesTimestamp: Long
@@ -29,6 +33,14 @@ class SharedPreferenceManager(private val sharedPreferences: SharedPreferences) 
     var nightModeCode: Int
         get() = readInt(PREFERENCES_NIGHT_MODE_CODE, 1)
         set(value) = writeInt(PREFERENCES_NIGHT_MODE_CODE, value)
+
+    var selectedCurrency: String
+        get() = readString(PREFERENCES_SELECTED_CURRENCY, "EUR") as String
+        set(value) = writeString(PREFERENCES_SELECTED_CURRENCY, value)
+
+    var selectedCurrencySaved: Boolean
+        get() = readBoolean(PREFERENCES_SELECTED_CURRENCY_SAVED, false)
+        set(value) = writeBoolean(PREFERENCES_SELECTED_CURRENCY_SAVED, value)
 
     // SharedPreferenceManager utility methods
     private fun remove(key: String) = sharedPreferences.edit().remove(key).apply()
