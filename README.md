@@ -31,6 +31,9 @@ The project uses the Model-View-ViewModel (MVVM) architecture with a Single Acti
 You can download the APK from the following link:
 https://github.com/CsiszerTamas/CurrencyConverter/blob/master/apk/CurrencyConverter_debug.apk
 
+Optimized APK of the app, after fixing issues by the feedback:
+https://github.com/CsiszerTamas/CurrencyConverter/blob/master/apk/CurrencyConverter_debug_optimized.apk
+
 The flag icons are from
 https://www.flaticon.com/
 
