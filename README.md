@@ -17,7 +17,7 @@ The project uses the Model-View-ViewModel (MVVM) architecture with a Single Acti
 * Used ListAdapter instead of RecyclerView.Adapter to make easier diffs
 * Remove EditText extension function decimal limitations, so full rates could be shown
 * Saved chosen currency with SharedPreferences and show it after app restart too
-* Added some unit tests to test Room
+* Added some unit tests to test Room DAO methods
 
 ## Libraries used:
 * **Koin** for dependency injection
