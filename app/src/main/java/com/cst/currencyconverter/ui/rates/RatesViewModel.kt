@@ -28,12 +28,14 @@ class RatesViewModel(
 
     companion object {
         private const val SCALE = 3
+        private const val BASE_CURRENCY_EUR = "EUR"
     }
 
     private val manuallyEnteredValues = MutableLiveData<Resource<RatesData>>()
     private var latestNetworkState: RatesData? = null
     private var selectedCurrency: String? = null
     private var selectedAmount: BigDecimal? = null
+    private var listWithSelectedFirstItem: List<BasicCurrencyRate>? = null
 
     var errorMessageShown = false
 
@@ -55,7 +57,26 @@ class RatesViewModel(
                         )
                     }
 
-                val listWithResources = currencyDecoratorService.convert(listBasicCurrencyRate)
+                listWithSelectedFirstItem = listBasicCurrencyRate
+
+                val selectedCurrencyVar = sharedPreferenceManager.selectedCurrency
+
+                // if we have a selected currency saved, then we move the selected currency to be the first in the list
+                if (selectedCurrencyVar != BASE_CURRENCY_EUR) {
+                    val selectedItem =
+                        listBasicCurrencyRate.find { it.currencyShortName == selectedCurrencyVar }
+
+                    val mutableList = listBasicCurrencyRate.toMutableList()
+                    mutableList.remove(selectedItem)
+                    if (selectedItem != null) {
+                        mutableList.add(0, selectedItem)
+                    }
+
+                    listWithSelectedFirstItem = mutableList.toList()
+                }
+
+                val listWithResources =
+                    currencyDecoratorService.convert(listWithSelectedFirstItem!!)
                 val decoratedData = RatesData(timestamp, listWithResources)
 
                 latestNetworkState = decoratedData
@@ -106,6 +127,8 @@ class RatesViewModel(
     fun enterCurrencyValue(selectedAmount: BigDecimal, selectedCurrency: String) {
         this.selectedAmount = selectedAmount
         this.selectedCurrency = selectedCurrency
+
+        sharedPreferenceManager.selectedCurrency = selectedCurrency
 
         launch {
             withContext(Dispatchers.IO) {

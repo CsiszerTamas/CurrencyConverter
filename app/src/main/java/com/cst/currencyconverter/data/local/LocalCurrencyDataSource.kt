@@ -2,10 +2,10 @@ package com.cst.currencyconverter.data.local
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.cst.currencyconverter.data.BasicCurrencyDataSource
 import com.cst.currencyconverter.data.Resource
 import com.cst.currencyconverter.data.model.BasicCurrencyRate
 import com.cst.currencyconverter.data.model.BasicRatesData
-import com.cst.currencyconverter.data.network.BasicCurrencyDataSource
 import com.cst.currencyconverter.utils.SharedPreferenceManager
 import kotlinx.coroutines.*
 import org.koin.core.KoinComponent

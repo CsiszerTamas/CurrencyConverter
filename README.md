@@ -11,6 +11,14 @@ When there is no internet connection, at app start a Snackbar informs the user a
 
 The project uses the Model-View-ViewModel (MVVM) architecture with a Single Activity and Navigation Component.
 
+## Issues fixed after feedback:
+* Instead of keeping navControllerNotInitialized as variable, I use ::navController.isInitialized
+* Moved rates calculations from main thread to background thread using coroutines (Dispatchers.IO), to make UI much smooth when scrolling
+* Used ListAdapter instead of RecyclerView.Adapter to make easier diffs
+* Remove EditText extension function decimal limitations, so full rates could be shown
+* Saved chosen currency with SharedPreferences and show it after app restart too
+* Added some unit tests to test Room
+
 ## Libraries used:
 * **Koin** for dependency injection
 * **Timber** for logging

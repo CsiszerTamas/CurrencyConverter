@@ -8,7 +8,7 @@ import com.cst.currencyconverter.constants.Constants
 import com.cst.currencyconverter.data.local.CurrencyDao
 import com.cst.currencyconverter.data.local.CurrencyDatabase
 import com.cst.currencyconverter.data.local.LocalCurrencyDataSource
-import com.cst.currencyconverter.data.network.NetworkBasicCurrencyDataSource
+import com.cst.currencyconverter.data.network.NetworkCurrencyDataSource
 import com.cst.currencyconverter.data.network.RatesNetworkService
 import com.cst.currencyconverter.data.repositories.currency.CurrencyRateRepository
 import com.cst.currencyconverter.data.repositories.currency.CurrencyRateRepositoryImpl
@@ -52,7 +52,7 @@ val appModules = module {
 
     factory<CurrencyRateRepository> {
         CurrencyRateRepositoryImpl(
-            networkBasicCurrencyDataSource = get(),
+            networkCurrencyDataSource = get(),
             localCurrencyDataSource = get(),
             currencyShortNames = get(named(Constants.DI_CURRENCY_SHORT_NAME)),
             descriptions = get(named(Constants.DI_CURRENCY_DESCRIPTION))
@@ -81,8 +81,8 @@ val appModules = module {
 }
 
 // Provider methods
-fun provideNetworkBasicCurrencyDataSource(): NetworkBasicCurrencyDataSource {
-    return NetworkBasicCurrencyDataSource(
+fun provideNetworkBasicCurrencyDataSource(): NetworkCurrencyDataSource {
+    return NetworkCurrencyDataSource(
         Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create())

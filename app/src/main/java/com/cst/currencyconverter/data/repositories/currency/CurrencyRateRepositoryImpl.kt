@@ -9,10 +9,10 @@ import com.cst.currencyconverter.data.Resource
 import com.cst.currencyconverter.data.local.LocalCurrencyDataSource
 import com.cst.currencyconverter.data.model.BasicRatesData
 import com.cst.currencyconverter.data.model.RatesData
-import com.cst.currencyconverter.data.network.NetworkBasicCurrencyDataSource
+import com.cst.currencyconverter.data.network.NetworkCurrencyDataSource
 
 class CurrencyRateRepositoryImpl(
-    private val networkBasicCurrencyDataSource: NetworkBasicCurrencyDataSource,
+    private val networkCurrencyDataSource: NetworkCurrencyDataSource,
     private val localCurrencyDataSource: LocalCurrencyDataSource,
     currencyShortNames: Array<String>,
     descriptions: Array<String>
@@ -32,7 +32,7 @@ class CurrencyRateRepositoryImpl(
         var successDataReceived = false
 
         // Add network data source
-        mediatorLiveData.addSource(networkBasicCurrencyDataSource.getRates()) { value ->
+        mediatorLiveData.addSource(networkCurrencyDataSource.getRates()) { value ->
             if (value.status == Resource.Status.SUCCESS) {
                 successDataReceived = true
                 value.data?.let { localCurrencyDataSource.setBasicRatesData(it) }
